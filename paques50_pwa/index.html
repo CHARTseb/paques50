@@ -1,15 +1,114 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ffffff"/>
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <title>Pâques 50</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours Pâques 50</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+    }
+    header {
+      background: #842;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #ddd;
+      padding: 0.5rem;
+    }
+    nav button {
+      margin: 0 5px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    .content {
+      padding: 1rem;
+    }
+    .day {
+      display: none;
+    }
+    .day.active {
+      display: block;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      color: #622;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">Chargement...</div>
-  <script type="module" src="main.js"></script>
+  <header>
+    <h1>Parcours Pâques 50 jours avec Jésus</h1>
+  </header>
+  <nav id="nav"></nav>
+  <div class="content" id="content"></div>
+
+  <script src="joursData.js"></script>
+<script>
+  const data = joursData;
+      {
+        jour: "Jour 1 - Dimanche 20 avril 2025",
+        theme: "Jour de Pâques",
+        texte: `DEUTERONOME 1:1-8` + "<br>" + `...VOICI LES PAROLES que Moïse adressa à tout Israël...`,
+        reflexion: `Pâques est enfin là... La véritable liberté exige une obéissance totale au Seigneur.`,
+        resolution: `Je renouvelle les promesses de mon baptême... Aide-moi à rester fidèle à Jésus-Christ pour toujours.`,
+        semaine: `Première semaine - du 20 au 27 avril 2025`
+      },
+      {
+        jour: "Jour 2 - Lundi 21 avril 2025",
+        theme: "Craignez Dieu seul",
+        texte: `DEUTERONOME 1:9-18` + "<br>" + `...Je vous ai dit en ce temps-là...`,
+        reflexion: `Le jugement juste repose sur l'impartialité enracinée dans la crainte du Seigneur.`,
+        resolution: `Cherchons à nous libérer de la peur des hommes pour pouvoir juger avec justice.`,
+        semaine: `Première semaine - du 20 au 27 avril 2025`
+      }
+      // Ajouter d'autres jours ici
+    ];
+
+    const nav = document.getElementById('nav');
+    const content = document.getElementById('content');
+
+    data.forEach((item, index) => {
+      const btn = document.createElement('button');
+      btn.textContent = `Jour ${index + 1}`;
+      btn.onclick = () => showDay(index);
+      nav.appendChild(btn);
+
+      const section = document.createElement('section');
+      section.className = 'day';
+      section.innerHTML = `
+        <h2>${item.jour} - <em>${item.theme}</em></h2>
+        <h3>Texte Biblique</h3>
+        <p>${item.texte}</p>
+        <h3>Réflexion</h3>
+        <p>${item.reflexion}</p>
+        <h3>Résolution</h3>
+        <p>${item.resolution}</p>
+        <h3>Infos de la semaine</h3>
+        <p>${item.semaine}</p>
+      `;
+      content.appendChild(section);
+    });
+
+    function showDay(index) {
+      document.querySelectorAll('.day').forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+    }
+
+    // Afficher le premier jour par défaut
+    showDay(0);
+  </script>
+  `` ​:contentReference[oaicite:0]{index=0}​
 </body>
 </html>
